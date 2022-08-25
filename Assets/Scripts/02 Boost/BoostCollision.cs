@@ -3,13 +3,30 @@ using UnityEngine.SceneManagement;
 
 public class BoostCollision : MonoBehaviour
 {
-    [SerializeField] float timeoutDelay = 1f;
 
+    // FOUND BUG: if crashing THEN hitting finish, you go to next level (could be a feature though)
+
+    // Params
+    [SerializeField] float timeoutDelay = 1f;
     [SerializeField] AudioClip crashSound;
     [SerializeField] AudioClip successSound;
 
+    // Cache
+    AudioSource sfx;
+
+    // State
+    bool isTransitioning = false;
+
+    private void Start() 
+    {
+        sfx = GetComponent<AudioSource>();
+    }
+
     private void OnCollisionEnter(Collision other) 
     {
+        // If we are in a transition state, leave this method
+        if(isTransitioning){return;}
+
         switch(other.gameObject.tag)
         {
             case "Friendly":
@@ -28,15 +45,19 @@ public class BoostCollision : MonoBehaviour
 
     void StartCrashSequence()
     {
-        GetComponent<AudioSource>().PlayOneShot(crashSound);
+        isTransitioning = true; // gets reset to default state on level reload ***
+        sfx.Stop(); // to prevent looping thrust audio
+        sfx.PlayOneShot(crashSound);
         GetComponent<RocketMovement>().enabled = false;
         Invoke("ReloadLevel", timeoutDelay);
     }
 
     void HitGoal()
     {
-        GetComponent<AudioSource>().PlayOneShot(successSound);
-        GetComponent<RocketMovement>().enabled = false; // optional
+        isTransitioning = true;
+        sfx.Stop(); // to prevent looping thrust audio
+        sfx.PlayOneShot(successSound);
+        GetComponent<RocketMovement>().enabled = false; // optional (could let player move and crash after success)
         Invoke("LoadNextLevel", timeoutDelay);
     }
 

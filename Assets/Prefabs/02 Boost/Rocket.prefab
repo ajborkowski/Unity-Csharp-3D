@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainThrust: 1000
   rotationSpeed: 100
+  mainEngine: {fileID: 8300000, guid: b071e5f33345de444b192a0a56b8d543, type: 3}
 --- !u!114 &2124680000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,4 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837c55f592a4cb641992957e36d7316b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeoutDelay: 1
+  timeoutDelay: 2
+  crashSound: {fileID: 8300000, guid: e0945bbd5aa6243419421db281123ac9, type: 3}
+  successSound: {fileID: 8300000, guid: 7f3783a47f8cf6e46b335cca463e6736, type: 3}

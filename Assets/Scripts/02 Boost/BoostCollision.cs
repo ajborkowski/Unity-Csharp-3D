@@ -70,7 +70,7 @@ public class BoostCollision : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
-        GetComponent<RocketMovement>().enabled = true;
+        //GetComponent<RocketMovement>().enabled = true; // gets reset anyway
     }
 
     void LoadNextLevel()

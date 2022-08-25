@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RocketMovement : MonoBehaviour
 {
+
+    // *** FOUND BUG: particles keep playing after collision
+
     /*
         Standardizing member variables in this way is a good idea!
 
@@ -16,6 +19,9 @@ public class RocketMovement : MonoBehaviour
     [SerializeField] float mainThrust = 1000f; // drag applied to RB
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] AudioClip mainEngine;
+    [SerializeField] ParticleSystem mainThrustParticles;
+    [SerializeField] ParticleSystem leftThrustParticles;
+    [SerializeField] ParticleSystem rightThrustParticles;
 
     // Cache
     Rigidbody rb;
@@ -46,10 +52,15 @@ public class RocketMovement : MonoBehaviour
             {
                 sfx.PlayOneShot(mainEngine);
             }
+            if(!mainThrustParticles.isPlaying)
+            {
+                mainThrustParticles.Play();
+            }
         }
         else
         {
             sfx.Stop();
+            mainThrustParticles.Stop();
         }
     }
 
@@ -58,10 +69,23 @@ public class RocketMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             ApplyRotation(rotationSpeed);
+            if (!rightThrustParticles.isPlaying)
+            {
+                rightThrustParticles.Play();
+            }
         }
         else if (Input.GetKey(KeyCode.D))
         {
             ApplyRotation(-rotationSpeed);
+            if (!leftThrustParticles.isPlaying)
+            {
+                leftThrustParticles.Play();
+            }
+        }
+        else
+        {
+            rightThrustParticles.Stop();
+            leftThrustParticles.Stop();
         }
     }
 

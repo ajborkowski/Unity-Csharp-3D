@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/02 BoostLv1.unity
     guid: 8413b0d49c593ec4bab86a634f6102c4
+  - enabled: 1
+    path: Assets/Scenes/02 BoostLv2.unity
+    guid: 8ae4911629846a04392f27909943cc7f
   m_configObjects: {}

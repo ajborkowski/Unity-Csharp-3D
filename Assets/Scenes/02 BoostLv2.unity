@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &70828798
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 459081223561026976, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 459081223561026980, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 072258cb45b45cb4cabf9dd929d59acf, type: 3}
 --- !u!4 &240214427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4699361964143237264, guid: 86349e34de97b4e45a833d5f112aefdb, type: 3}

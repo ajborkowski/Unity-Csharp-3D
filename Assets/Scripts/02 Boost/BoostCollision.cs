@@ -11,6 +11,9 @@ public class BoostCollision : MonoBehaviour
     [SerializeField] AudioClip crashSound;
     [SerializeField] AudioClip successSound;
 
+    [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] ParticleSystem successParticles;
+
     // Cache
     AudioSource sfx;
 
@@ -48,6 +51,7 @@ public class BoostCollision : MonoBehaviour
         isTransitioning = true; // gets reset to default state on level reload ***
         sfx.Stop(); // to prevent looping thrust audio
         sfx.PlayOneShot(crashSound);
+        crashParticles.Play();
         GetComponent<RocketMovement>().enabled = false;
         Invoke("ReloadLevel", timeoutDelay);
     }
@@ -57,6 +61,7 @@ public class BoostCollision : MonoBehaviour
         isTransitioning = true;
         sfx.Stop(); // to prevent looping thrust audio
         sfx.PlayOneShot(successSound);
+        successParticles.Play();
         GetComponent<RocketMovement>().enabled = false; // optional (could let player move and crash after success)
         Invoke("LoadNextLevel", timeoutDelay);
     }

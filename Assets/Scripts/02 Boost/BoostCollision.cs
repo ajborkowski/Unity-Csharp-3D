@@ -19,16 +19,31 @@ public class BoostCollision : MonoBehaviour
 
     // State
     bool isTransitioning = false;
+    bool collisionDisabled = false;
 
     private void Start() 
     {
         sfx = GetComponent<AudioSource>();
     }
 
+    private void Update() 
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("Debug: Loading next level");
+            LoadNextLevel();
+        }
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            collisionDisabled = !collisionDisabled; // toggle collision
+            Debug.Log("Debug: Collisions on: " + !collisionDisabled);
+        }
+    }
+
     private void OnCollisionEnter(Collision other) 
     {
         // If we are in a transition state, leave this method
-        if(isTransitioning){return;}
+        if( isTransitioning || collisionDisabled ){return;}
 
         switch(other.gameObject.tag)
         {

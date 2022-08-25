@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class RocketMovement : MonoBehaviour
 {
-    Rigidbody rb;
-    AudioSource thrustSound;
+    /*
+        Standardizing member variables in this way is a good idea!
 
+        Parameters - for tuning, typically in the editor
+        Cache - e.g. references for readibility or speed
+        State - private instance variables
+    */
+
+    // Parameters
     [SerializeField] float mainThrust = 1000f; // drag applied to RB
     [SerializeField] float rotationSpeed = 100f;
+    [SerializeField] AudioClip mainEngine;
+
+    // Cache
+    Rigidbody rb;
+    AudioSource sfx;
+
+    // State
+    // bool isAlive = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        thrustSound = GetComponent<AudioSource>();
+        sfx = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,14 +42,14 @@ public class RocketMovement : MonoBehaviour
         {
             //Debug.Log("Pressed space");
             rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-            if(!thrustSound.isPlaying)
+            if(!sfx.isPlaying)
             {
-                thrustSound.Play();
+                sfx.PlayOneShot(mainEngine);
             }
         }
         else
         {
-            thrustSound.Stop();
+            sfx.Stop();
         }
     }
 

@@ -5,6 +5,9 @@ public class BoostCollision : MonoBehaviour
 {
     [SerializeField] float timeoutDelay = 1f;
 
+    [SerializeField] AudioClip crashSound;
+    [SerializeField] AudioClip successSound;
+
     private void OnCollisionEnter(Collision other) 
     {
         switch(other.gameObject.tag)
@@ -14,7 +17,7 @@ public class BoostCollision : MonoBehaviour
                 break;
             case "Finish":
                 //Debug.Log("You made it to finish.");
-                LoadNextLevel();
+                HitGoal();
                 break;
             default:
                 //Debug.Log("Huh? What? You crashed.");
@@ -25,12 +28,14 @@ public class BoostCollision : MonoBehaviour
 
     void StartCrashSequence()
     {
+        GetComponent<AudioSource>().PlayOneShot(crashSound);
         GetComponent<RocketMovement>().enabled = false;
         Invoke("ReloadLevel", timeoutDelay);
     }
 
     void HitGoal()
     {
+        GetComponent<AudioSource>().PlayOneShot(successSound);
         GetComponent<RocketMovement>().enabled = false; // optional
         Invoke("LoadNextLevel", timeoutDelay);
     }
